@@ -1,0 +1,31 @@
+:root {
+  color-scheme: light;
+  --paper: #f7f1e3;
+  --paper-deep: #efe4d1;
+  --ink: #294045;
+  --leaf: #6ba06f;
+  --sky: #69a8d6;
+  --orange: #ef9d50;
+  --pink: #efb0c9;
+}
+
+body {
+  background:
+    radial-gradient(circle at top left, rgb(239 176 201 / 0.28), transparent 24%),
+    radial-gradient(circle at top right, rgb(105 168 214 / 0.25), transparent 20%),
+    linear-gradient(180deg, #fbf6eb 0%, var(--paper) 100%);
+  color: var(--ink);
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  content: '';
+  background-image:
+    linear-gradient(rgb(41 64 69 / 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(41 64 69 / 0.03) 1px, transparent 1px);
+  background-size: 22px 22px;
+  opacity: 0.35;
+}
