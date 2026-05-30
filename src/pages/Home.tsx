@@ -116,7 +116,7 @@ export default function Home() {
           to="/loading"
           onClick={() => setFlowStage('loading')}
           className="empty-main-button"
-          aria-label="生成旅行副本"
+          aria-label="开始你的Tripsim"
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -128,16 +128,7 @@ export default function Home() {
             letterSpacing: '0.1em',
           }}
         >
-          生成旅行副本
-        </Link>
-
-        <Link
-          to="/budget-sim"
-          onClick={() => setFlowStage('budget-sim')}
-          className="empty-sub-button"
-          aria-label="预算模拟试玩"
-        >
-          预算模拟试玩
+          开始你的Tripsim
         </Link>
       </section>
 

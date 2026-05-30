@@ -13,8 +13,8 @@ export default function LoadingPage() {
   useEffect(() => {
     const cleanup = initLoadingEffects(() => {
       resolveScenarioByDraftLink(draftLink)
-      setFlowStage('budget-sim')
-      navigate('/budget-sim', { replace: true })
+      setFlowStage('wenzhou-budget')
+      navigate('/wenzhou-budget', { replace: true })
     })
 
     return cleanup
@@ -74,7 +74,7 @@ export default function LoadingPage() {
               </li>
               <li className="task-item pending">
                 <span className="progress-icon" aria-hidden="true" />
-                <span className="task-text">生成穷游方案...</span>
+                <span className="task-text">生成旅游方案...</span>
               </li>
               <li className="task-item pending">
                 <span className="progress-icon" aria-hidden="true" />
