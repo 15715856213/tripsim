@@ -33,7 +33,7 @@ export function AppRouter() {
       <Route
         path="/loading"
         element={
-          <FlowGuard allow={['loading', 'journey']}>
+          <FlowGuard allow={['loading', 'journey', 'wenzhou-budget']}>
             <LoadingPage />
           </FlowGuard>
         }
