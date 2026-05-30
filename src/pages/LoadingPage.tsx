@@ -13,8 +13,8 @@ export default function LoadingPage() {
   useEffect(() => {
     const cleanup = initLoadingEffects(() => {
       resolveScenarioByDraftLink(draftLink)
-      setFlowStage('journey')
-      navigate('/journey', { replace: true })
+      setFlowStage('budget-sim')
+      navigate('/budget-sim', { replace: true })
     })
 
     return cleanup

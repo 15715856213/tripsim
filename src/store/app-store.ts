@@ -3,7 +3,7 @@ import { defaultScenarioPreset, scenarioPresets } from '@/data/scenarios'
 import { createJourneyScenario, resolveScenarioPreset, selectJourneyOption } from '@/lib/journey'
 import type { JourneyScenario, JourneyScenarioPreset, ScenarioMatchMeta } from '@/types/journey'
 
-export type FlowStage = 'home' | 'loading' | 'journey' | 'result'
+export type FlowStage = 'home' | 'loading' | 'journey' | 'result' | 'budget-sim'
 
 type AppState = {
   draftLink: string

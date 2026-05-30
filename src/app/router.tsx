@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import AppShell from '@/components/layout/AppShell'
+import BudgetSimPage from '@/pages/BudgetSimPage'
 import Home from '@/pages/Home'
 import JourneyPage from '@/pages/JourneyPage'
 import LoadingPage from '@/pages/LoadingPage'
@@ -33,6 +34,14 @@ export function AppRouter() {
         element={
           <FlowGuard allow={['loading', 'journey']}>
             <LoadingPage />
+          </FlowGuard>
+        }
+      />
+      <Route
+        path="/budget-sim"
+        element={
+          <FlowGuard allow={['loading', 'journey', 'result', 'budget-sim']}>
+            <BudgetSimPage />
           </FlowGuard>
         }
       />
