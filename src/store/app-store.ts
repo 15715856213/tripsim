@@ -3,7 +3,13 @@ import { defaultScenarioPreset, scenarioPresets } from '@/data/scenarios'
 import { createJourneyScenario, resolveScenarioPreset, selectJourneyOption } from '@/lib/journey'
 import type { JourneyScenario, JourneyScenarioPreset, ScenarioMatchMeta } from '@/types/journey'
 
-export type FlowStage = 'home' | 'loading' | 'journey' | 'result' | 'budget-sim'
+export type FlowStage = 'home' | 'loading' | 'journey' | 'result' | 'wenzhou-budget' | 'wenzhou-sim'
+
+type WenzhouSimBudgetSnapshot = {
+  budget: number
+  spent: number
+  remaining: number
+}
 
 type AppState = {
   draftLink: string
@@ -12,16 +18,57 @@ type AppState = {
   matchMeta: ScenarioMatchMeta
   scenario: JourneyScenario
   flowStage: FlowStage
+  wenzhouSimBudget: number
+  wenzhouSimSavedSnapshot: WenzhouSimBudgetSnapshot | null
   setDraftLink: (value: string) => void
   resolveScenarioByDraftLink: (value?: string) => void
   setActiveScenario: (scenarioId: string) => void
   selectNodeOption: (nodeId: string, optionId: string) => void
   resetScenarioProgress: () => void
   setFlowStage: (stage: FlowStage) => void
+  setWenzhouSimBudget: (value: number) => void
+  saveWenzhouSimSnapshot: (value: WenzhouSimBudgetSnapshot) => void
 }
 
 const initialResolved = resolveScenarioPreset('', scenarioPresets)
 const initialScenario = createJourneyScenario(initialResolved.preset, initialResolved.matchMeta)
+
+const loadWenzhouSimSnapshot = (): WenzhouSimBudgetSnapshot | null => {
+  if (typeof window === 'undefined') {
+    return null
+  }
+
+  try {
+    const raw = window.localStorage.getItem('wenzhouSimSnapshot')
+    if (!raw) {
+      return null
+    }
+
+    const parsed = JSON.parse(raw) as Partial<WenzhouSimBudgetSnapshot> | null
+    if (!parsed || typeof parsed !== 'object') {
+      return null
+    }
+
+    if (
+      typeof parsed.budget !== 'number' ||
+      typeof parsed.spent !== 'number' ||
+      typeof parsed.remaining !== 'number' ||
+      !Number.isFinite(parsed.budget) ||
+      !Number.isFinite(parsed.spent) ||
+      !Number.isFinite(parsed.remaining)
+    ) {
+      return null
+    }
+
+    return {
+      budget: parsed.budget,
+      spent: parsed.spent,
+      remaining: parsed.remaining,
+    }
+  } catch {
+    return null
+  }
+}
 
 export const useAppStore = create<AppState>((set, get) => ({
   draftLink: '',
@@ -30,6 +77,8 @@ export const useAppStore = create<AppState>((set, get) => ({
   matchMeta: initialResolved.matchMeta,
   scenario: initialScenario,
   flowStage: 'home',
+  wenzhouSimBudget: 300,
+  wenzhouSimSavedSnapshot: loadWenzhouSimSnapshot(),
   setDraftLink: (value) => {
     const resolved = resolveScenarioPreset(value, get().scenarioCatalog)
 
@@ -82,4 +131,17 @@ export const useAppStore = create<AppState>((set, get) => ({
     })
   },
   setFlowStage: (stage) => set({ flowStage: stage }),
+  setWenzhouSimBudget: (value) => set({ wenzhouSimBudget: value }),
+  saveWenzhouSimSnapshot: (value) => {
+    set({ wenzhouSimSavedSnapshot: value })
+    if (typeof window === 'undefined') {
+      return
+    }
+
+    try {
+      window.localStorage.setItem('wenzhouSimSnapshot', JSON.stringify(value))
+    } catch {
+      return
+    }
+  },
 }))

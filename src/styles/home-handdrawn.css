@@ -564,39 +564,6 @@ button {
   50% { filter: brightness(1.04); }
 }
 
-.empty-sub-button {
-  display: block;
-  width: min(300px, 48vw);
-  margin: 14px auto 0;
-  padding: 14px 18px;
-  border: 3px solid rgba(32, 96, 146, 0.35);
-  border-radius: 20px 24px 18px 22px;
-  background:
-    repeating-linear-gradient(-12deg, rgba(255,255,255,0.12) 0 10px, rgba(25, 130, 196, 0.10) 11px 13px, transparent 14px 26px),
-    #5fb6e9;
-  box-shadow:
-    inset 0 4px 0 rgba(255,255,255,0.22),
-    inset 0 -6px 0 rgba(29, 120, 178, 0.14),
-    4px 6px 0 rgba(21, 80, 122, 0.14);
-  color: white;
-  font-weight: 900;
-  font-size: clamp(16px, 1.1vw, 20px);
-  letter-spacing: 0.08em;
-  text-decoration: none;
-  text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.empty-sub-button:hover {
-  transform: translateY(-2px) rotate(0.25deg);
-  box-shadow:
-    inset 0 4px 0 rgba(255,255,255,0.22),
-    inset 0 -6px 0 rgba(29, 120, 178, 0.14),
-    6px 9px 0 rgba(21, 80, 122, 0.16);
-}
-.empty-sub-button:active {
-  transform: scale(0.99);
-}
-
 /* 底部大地 */
 .ground {
   position: absolute;

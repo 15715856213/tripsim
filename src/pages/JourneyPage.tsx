@@ -131,9 +131,9 @@ export default function JourneyPage() {
       </div>
 
       <div className="grid gap-4 md:grid-cols-3">
-        <InfoCard label="总预算" value={`¥${scenario.budget}`} icon={<Coins size={18} />} tone="leaf" />
-        <InfoCard label="已消费" value={`¥${scenario.spent}`} icon={<Sparkles size={18} />} tone="orange" />
-        <InfoCard label="剩余预算" value={`¥${scenario.budgetSnapshot.remaining}`} icon={<Footprints size={18} />} tone="sky" />
+        <InfoCard label="总预算" value={`${scenario.budget}`} icon={<Coins size={18} />} tone="leaf" />
+        <InfoCard label="已消费" value={`${scenario.spent}`} icon={<Sparkles size={18} />} tone="orange" />
+        <InfoCard label="剩余预算" value={`${scenario.budgetSnapshot.remaining}`} icon={<Footprints size={18} />} tone="sky" />
       </div>
 
       <div className="grid gap-6 xl:grid-cols-[0.88fr_1.12fr]">
