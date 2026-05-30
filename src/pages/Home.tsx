@@ -1,95 +1,204 @@
-import { motion } from 'framer-motion'
-import { ArrowRight, Compass, Sparkles, Star } from 'lucide-react'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import HomeBoardPath from '@/components/home/HomeBoardPath'
 import { useAppStore } from '@/store/app-store'
+import { initHomeEffects } from '@/lib/home-effects'
+import '@/styles/home-handdrawn.css'
 
 export default function Home() {
   const draftLink = useAppStore((state) => state.draftLink)
   const setDraftLink = useAppStore((state) => state.setDraftLink)
   const setFlowStage = useAppStore((state) => state.setFlowStage)
 
+  useEffect(() => {
+    initHomeEffects()
+  }, [])
+
   return (
-    <section className="space-y-10">
-      <motion.div
-        initial={{ y: 14, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        className="relative overflow-hidden rounded-[2.75rem] border-2 border-ink/10 bg-white/80 p-6 shadow-sketch backdrop-blur md:p-10"
-      >
-        <div className="pointer-events-none absolute -left-12 -top-16 h-40 w-40 rounded-full bg-pink/15 blur-3xl" />
-        <div className="pointer-events-none absolute -right-16 top-10 h-44 w-44 rounded-full bg-sky/15 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-20 left-1/2 h-52 w-52 -translate-x-1/2 rounded-full bg-orange/12 blur-3xl" />
+    <main className="stage" aria-label="TripSim 手绘旅行首页">
+      {/* 纸张纹理层 */}
+      <div className="paper-texture" />
+      <div className="pencil-lines" />
+      <div className="random-sparkles" id="sparkles" />
 
-        <div className="relative z-10 mx-auto max-w-3xl text-center">
-          <div className="flex flex-wrap items-center justify-between gap-3 text-left">
-            <div className="inline-flex items-center gap-2 rounded-full border border-ink/10 bg-paper/80 px-4 py-2 text-xs font-semibold tracking-[0.2em] text-ink/70">
-              <span className="rounded-full bg-leaf/15 p-1 text-leaf">
-                <Compass size={14} />
-              </span>
-              旅行预算模拟器
-            </div>
-            <button
-              type="button"
-              onClick={() => document.getElementById('trip-link')?.focus()}
-              className="inline-flex items-center gap-2 rounded-full border-2 border-ink/10 bg-white/85 px-4 py-2 text-xs font-semibold text-ink shadow-soft transition hover:-translate-y-0.5"
-            >
-              <Star size={14} className="text-orange" />
-              开始试玩
-            </button>
-          </div>
-
-          <h1 className="mt-8 text-4xl font-black leading-tight text-ink md:text-6xl">
-            先试玩旅行，
-            <br />
-            再决定出不出发！
-          </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-ink/70 md:text-lg">
-            粘贴一条旅行视频链接，把路线变成桌游棋盘式的预算副本，提前看到交通、住宿、吃喝与随机花费的节奏。
-          </p>
-
-          <div className="mt-7 rounded-[2.25rem] border-2 border-ink/10 bg-white/85 p-5 shadow-soft md:p-6">
-            <div className="flex flex-col gap-3 md:flex-row">
-              <div className="relative flex-1">
-                <label className="sr-only" htmlFor="trip-link">
-                  粘贴抖音旅行视频链接
-                </label>
-                <input
-                  id="trip-link"
-                  value={draftLink}
-                  onChange={(event) => setDraftLink(event.target.value)}
-                  placeholder="粘贴抖音旅行视频链接..."
-                  className="h-12 w-full rounded-2xl border-2 border-ink/10 bg-paper px-4 pr-10 outline-none transition focus:border-sky/50 focus:bg-white"
-                />
-                <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-ink/35">
-                  <Sparkles size={18} />
-                </span>
-              </div>
-
-              <Link
-                to="/loading"
-                onClick={() => setFlowStage('loading')}
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-2xl bg-leaf px-6 font-semibold text-white shadow-soft transition hover:-translate-y-0.5 hover:bg-leaf/90"
-              >
-                生成旅行副本
-                <ArrowRight size={16} />
-              </Link>
-            </div>
-
-            <div className="mt-4 flex flex-wrap justify-center gap-2">
-              {['交通与住宿大头', '随机花费留白', '棋盘路线预览'].map((item) => (
-                <span
-                  key={item}
-                  className="rounded-full border border-ink/10 bg-paper/80 px-3 py-1.5 text-xs font-semibold text-ink/60"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
+      {/* 左上太阳 */}
+      <section className="sun-wrap float-slow" aria-hidden="true">
+        <div className="sun-rays" />
+        <div className="sun-face">
+          <span className="eye eye-left" />
+          <span className="eye eye-right" />
+          <span className="mouth" />
         </div>
-      </motion.div>
+      </section>
 
-      <HomeBoardPath />
-    </section>
+      {/* 顶部云朵 */}
+      <div className="cloud cloud-left cloud-drift-a" aria-hidden="true">
+        <span /><span /><span />
+      </div>
+      <div className="cloud cloud-mid cloud-drift-b" aria-hidden="true">
+        <span /><span /><span />
+      </div>
+      <div className="cloud cloud-right cloud-drift-c" aria-hidden="true">
+        <span /><span /><span />
+      </div>
+
+      {/* Logo 区域 */}
+      <header className="logo-area gentle-bob">
+        <div className="logo-dice" aria-hidden="true">
+          <div className="dice-face top"><i /><i /><i /></div>
+          <div className="dice-face left"><i /><i /><i /></div>
+          <div className="dice-face right"><i /><i /><i /></div>
+        </div>
+        <div className="logo-text-wrap">
+          <h1 className="logo-text" aria-label="TripSim">
+            <span className="c-t">T</span><span className="c-r">r</span><span className="c-i">i</span><span className="c-p">p</span><span className="c-s">S</span><span className="c-ii">i</span><span className="c-m">m</span>
+          </h1>
+          <p className="logo-subtitle">旅行预算模拟器</p>
+        </div>
+      </header>
+
+      {/* 右上角开始试玩纸牌 */}
+      <button className="start-card" type="button" aria-label="开始试玩"
+        onClick={() => document.getElementById('trip-link')?.focus()}>
+        <span className="tape tape-left" />
+        <span className="tape tape-right" />
+        <span className="star">★</span> 开始试玩
+      </button>
+
+      {/* 热气球 */}
+      <div className="balloon balloon-float" aria-hidden="true">
+        <div className="balloon-body">
+          <span className="stripe stripe-1" />
+          <span className="stripe stripe-2" />
+          <span className="stripe stripe-3" />
+          <span className="stripe stripe-4" />
+        </div>
+        <div className="balloon-lines"><i /><i /><i /></div>
+        <div className="balloon-basket" />
+      </div>
+
+      {/* 中央标题和输入控件 */}
+      <section className="hero-content">
+        <div className="title-block title-breathe">
+          <h2 className="hero-title line-one">
+            <span className="pink-word">先试玩</span><span className="orange-word">旅行，</span>
+          </h2>
+          <h2 className="hero-title line-two">再决定出不出发！</h2>
+        </div>
+
+        {/* 输入框 */}
+        <div className="empty-input-shell" aria-label="粘贴旅行视频链接">
+          <input
+            id="trip-link"
+            type="text"
+            value={draftLink}
+            onChange={(e) => setDraftLink(e.target.value)}
+            placeholder="粘贴抖音旅行视频链接..."
+            style={{
+              position: 'absolute',
+              inset: 0,
+              border: 'none',
+              background: 'transparent',
+              padding: '0 20px',
+              fontSize: 'clamp(16px, 1.2vw, 20px)',
+              outline: 'none',
+              color: '#302717',
+              fontFamily: 'inherit',
+              fontWeight: 600,
+              letterSpacing: '0.04em',
+              borderRadius: 'inherit',
+              zIndex: 2,
+            }}
+          />
+        </div>
+
+        {/* 主按钮 */}
+        <Link
+          to="/loading"
+          onClick={() => setFlowStage('loading')}
+          className="empty-main-button"
+          aria-label="生成旅行副本"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            textDecoration: 'none',
+            color: 'white',
+            fontWeight: 900,
+            fontSize: 'clamp(18px, 1.4vw, 26px)',
+            letterSpacing: '0.1em',
+          }}
+        >
+          生成旅行副本
+        </Link>
+      </section>
+
+      {/* 左侧旅行起点场景 */}
+      <section className="left-scene" aria-hidden="true">
+        <div className="rainbow"><span /><span /><span /></div>
+        <div className="left-hill hill-back" />
+        <div className="left-hill hill-front" />
+        <div className="tree tree-left"><i /></div>
+        <div className="little-bus">
+          <div className="bus-window w1" />
+          <div className="bus-window w2" />
+          <div className="bus-wheel wheel-a" />
+          <div className="bus-wheel wheel-b" />
+        </div>
+        <div className="wood-sign">
+          <div className="sign-board">冒险从这里开始！</div>
+          <div className="sign-post" />
+        </div>
+        <div className="grass grass-a" />
+        <div className="grass grass-b" />
+      </section>
+
+      {/* 右侧远山场景 */}
+      <section className="right-scene" aria-hidden="true">
+        <svg className="mountain-svg" viewBox="0 0 520 360" preserveAspectRatio="none">
+          <path className="mountain mountain-far" d="M30 270 L120 70 L210 190 L320 55 L505 145 L505 360 L30 360 Z" />
+          <path className="mountain mountain-near" d="M0 300 C90 195 170 170 260 190 C325 115 380 105 520 190 L520 360 L0 360 Z" />
+          <path className="snow snow-a" d="M120 70 L158 120 L92 116 Z" />
+          <path className="snow snow-b" d="M320 55 L365 105 L285 100 Z" />
+          <path className="crayon-line" d="M20 295 C130 230 230 242 320 210 C385 188 440 205 515 245" />
+          <path className="hill-road" d="M155 245 C240 236 335 265 485 318" />
+        </svg>
+        <div className="right-tree"><i /></div>
+      </section>
+
+      {/* 底部草地 */}
+      <div className="ground ground-back" aria-hidden="true" />
+      <div className="ground ground-front" aria-hidden="true" />
+
+      {/* 底部桌游路径 */}
+      <section className="board-path" aria-hidden="true">
+        <div className="tile purple" style={{ '--x': 4, '--y': 13, '--r': '-2deg' } as React.CSSProperties}><b>★</b></div>
+        <div className="tile blue" style={{ '--x': 10, '--y': 16, '--r': '-4deg' } as React.CSSProperties}><b>↗</b></div>
+        <div className="tile red" style={{ '--x': 16, '--y': 19, '--r': '2deg' } as React.CSSProperties}><b>?</b></div>
+        <div className="tile orange" style={{ '--x': 22, '--y': 21, '--r': '1deg' } as React.CSSProperties}><b>▶</b></div>
+        <div className="tile teal" style={{ '--x': 28, '--y': 23, '--r': '-2deg' } as React.CSSProperties}><b>●</b></div>
+        <div className="tile pink" style={{ '--x': 34, '--y': 26, '--r': '3deg' } as React.CSSProperties}><b>★</b></div>
+        <div className="tile cyan" style={{ '--x': 40, '--y': 29, '--r': '-1deg' } as React.CSSProperties}><b>⚑</b></div>
+        <div className="tile orange" style={{ '--x': 46, '--y': 31, '--r': '1deg' } as React.CSSProperties}><b>▶</b></div>
+        <div className="tile green" style={{ '--x': 52, '--y': 30, '--r': '-3deg' } as React.CSSProperties}><b>★</b></div>
+        <div className="tile purple-dark" style={{ '--x': 58, '--y': 28, '--r': '2deg' } as React.CSSProperties}><b>?</b></div>
+        <div className="tile blue" style={{ '--x': 64, '--y': 25, '--r': '-2deg' } as React.CSSProperties}><b>✈</b></div>
+        <div className="tile red" style={{ '--x': 70, '--y': 22, '--r': '2deg' } as React.CSSProperties}><b>●</b></div>
+        <div className="tile yellow-green" style={{ '--x': 76, '--y': 20, '--r': '-1deg' } as React.CSSProperties}><b>▶</b></div>
+        <div className="tile purple" style={{ '--x': 82, '--y': 19, '--r': '2deg' } as React.CSSProperties}><b>★</b></div>
+        <div className="tile red" style={{ '--x': 88, '--y': 21, '--r': '-2deg' } as React.CSSProperties}><b>⚑</b></div>
+        <div className="tile teal" style={{ '--x': 94, '--y': 23, '--r': '1deg' } as React.CSSProperties}><b>?</b></div>
+        <div className="tile yellow" style={{ '--x': 100, '--y': 26, '--r': '3deg' } as React.CSSProperties}><b>★</b></div>
+      </section>
+
+      {/* 棋子和骰子 */}
+      <div className="pawn pawn-blue pawn-float-a" aria-hidden="true" />
+      <div className="pawn pawn-red pawn-float-b" aria-hidden="true" />
+      <div className="bottom-dice" aria-hidden="true">
+        <span /><span /><span /><span />
+      </div>
+
+      {/* 前景草、小花点缀 */}
+      <div className="foreground-doodles" id="doodles" />
+    </main>
   )
 }

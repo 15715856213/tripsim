@@ -27,16 +27,16 @@ function FlowGuard({ allow, redirectTo = '/', children }: FlowGuardProps) {
 export function AppRouter() {
   return (
     <Routes>
+      <Route path="/" element={<Home />} />
+      <Route
+        path="/loading"
+        element={
+          <FlowGuard allow={['loading', 'journey']}>
+            <LoadingPage />
+          </FlowGuard>
+        }
+      />
       <Route element={<AppShell />}>
-        <Route path="/" element={<Home />} />
-        <Route
-          path="/loading"
-          element={
-            <FlowGuard allow={['loading', 'journey']}>
-              <LoadingPage />
-            </FlowGuard>
-          }
-        />
         <Route
           path="/journey"
           element={
