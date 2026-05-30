@@ -146,9 +146,29 @@ export function initLoadingEffects(onComplete: () => void) {
 
     hintText.textContent = '开始你的TripSim';
     bottomHint.classList.add('ready');
+    bottomHint.style.cursor = 'pointer';
+    bottomHint.setAttribute('role', 'button');
+    bottomHint.setAttribute('tabindex', '0');
 
-    await wait(600);
-    onComplete();
+    const handleClick = (e: Event) => {
+      e.stopPropagation();
+      bottomHint.removeEventListener('click', handleClick);
+      bottomHint.removeEventListener('keydown', handleKey);
+      bottomHint.style.cursor = '';
+      bottomHint.removeAttribute('role');
+      bottomHint.removeAttribute('tabindex');
+      onComplete();
+    };
+
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        handleClick(e);
+      }
+    };
+
+    bottomHint.addEventListener('click', handleClick);
+    bottomHint.addEventListener('keydown', handleKey);
   }
 
   // 初始适配
