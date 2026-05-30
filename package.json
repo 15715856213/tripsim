@@ -9,6 +9,7 @@
     "build": "tsc -b && vite build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
+    "deploy:manual": "powershell -ExecutionPolicy Bypass -File ./deploy-gh-pages.ps1",
     "lint": "eslint .",
     "preview": "vite preview",
     "check": "tsc -b --noEmit"

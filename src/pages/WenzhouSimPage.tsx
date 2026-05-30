@@ -215,7 +215,7 @@ function WenzhouSimPage() {
 
         <aside className="left-rail">
           <div className="left-art scenic-left">
-            <img src="/illustrations/jiangxinyu-sketch.png" alt="" />
+            <img src={`${import.meta.env.BASE_URL}illustrations/jiangxinyu-sketch.png`} alt="" />
           </div>
           <div className="rail-line" />
           {scriptNodes.map((node, index) => {

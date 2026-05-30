@@ -35,6 +35,8 @@ export type ScriptNode = {
 
 export type BudgetState = 'abundant' | 'healthy' | 'tight' | 'over'
 
+const assetUrl = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}`
+
 export const siteMeta = {
   city: '温州',
   title: '温州城市漫游决策副本',
@@ -74,7 +76,7 @@ export const scriptNodes: ScriptNode[] = [
     location: '五马街附近',
     mission: '开局补能量，别把上午的快乐输给低血糖。',
     accent: '#5ba65b',
-    illustration: '/illustrations/breakfast-sketch.png',
+    illustration: assetUrl('illustrations/breakfast-sketch.png'),
     options: [
       {
         id: 'hotel-breakfast',
@@ -154,7 +156,7 @@ export const scriptNodes: ScriptNode[] = [
     location: '鹿城区',
     mission: '轻松把“来过温州”的含金量打上去。',
     accent: '#59b6df',
-    illustration: '/illustrations/jiangxinyu-sketch.png',
+    illustration: assetUrl('illustrations/jiangxinyu-sketch.png'),
     options: [
       {
         id: 'island-ticket',
@@ -212,7 +214,7 @@ export const scriptNodes: ScriptNode[] = [
     location: '五马历史文化街区',
     mission: '逛到“热闹”即可，别被消费冲动偷走下午体力。',
     accent: '#f1a23a',
-    illustration: '/illustrations/wuma-street-sketch.png',
+    illustration: assetUrl('illustrations/wuma-street-sketch.png'),
     options: [
       {
         id: 'souvenir-shopping',
@@ -270,7 +272,7 @@ export const scriptNodes: ScriptNode[] = [
     location: '南塘街附近',
     mission: '用一顿饭决定今天是“本地派”还是“清淡续命派”。',
     accent: '#e58d4d',
-    illustration: '/illustrations/lunch-sketch.png',
+    illustration: assetUrl('illustrations/lunch-sketch.png'),
     options: [
       {
         id: 'seafood-feast',
@@ -350,7 +352,7 @@ export const scriptNodes: ScriptNode[] = [
     location: '南塘街',
     mission: '把节奏放慢，把“城市温柔面”拍进脑子里。',
     accent: '#79a674',
-    illustration: '/illustrations/nantang-sketch.png',
+    illustration: assetUrl('illustrations/nantang-sketch.png'),
     options: [
       {
         id: 'boat-ride',
@@ -408,7 +410,7 @@ export const scriptNodes: ScriptNode[] = [
     location: '咖啡街区',
     mission: '续命 + 整理照片，给晚上的体力条续一口。',
     accent: '#8a6a57',
-    illustration: '/illustrations/coffee-sketch.png',
+    illustration: assetUrl('illustrations/coffee-sketch.png'),
     options: [
       {
         id: 'instagram-cafe',
@@ -488,7 +490,7 @@ export const scriptNodes: ScriptNode[] = [
     location: '瓯江沿岸',
     mission: '用夜风收尾，把“今天很值”落到最后一幕。',
     accent: '#486cb0',
-    illustration: '/illustrations/night-view-sketch.png',
+    illustration: assetUrl('illustrations/night-view-sketch.png'),
     options: [
       {
         id: 'night-cruise',
