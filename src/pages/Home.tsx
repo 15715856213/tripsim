@@ -130,6 +130,15 @@ export default function Home() {
         >
           生成旅行副本
         </Link>
+
+        <Link
+          to="/budget-sim"
+          onClick={() => setFlowStage('budget-sim')}
+          className="empty-sub-button"
+          aria-label="预算模拟试玩"
+        >
+          预算模拟试玩
+        </Link>
       </section>
 
       {/* 左侧旅行起点场景 */}
