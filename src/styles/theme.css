@@ -7,13 +7,17 @@
   --sky: #69a8d6;
   --orange: #ef9d50;
   --pink: #efb0c9;
+  --violet: #8667d8;
+  --mint: #9fdcbd;
+  --sun: #f6c85f;
 }
 
 body {
   background:
-    radial-gradient(circle at top left, rgb(239 176 201 / 0.28), transparent 24%),
-    radial-gradient(circle at top right, rgb(105 168 214 / 0.25), transparent 20%),
-    linear-gradient(180deg, #fbf6eb 0%, var(--paper) 100%);
+    radial-gradient(circle at 12% 12%, rgb(239 176 201 / 0.42), transparent 23%),
+    radial-gradient(circle at 88% 10%, rgb(105 168 214 / 0.36), transparent 22%),
+    radial-gradient(circle at 70% 92%, rgb(159 220 189 / 0.42), transparent 26%),
+    linear-gradient(135deg, #fff9e8 0%, #f7f1e3 50%, #edf6ee 100%);
   color: var(--ink);
 }
 
@@ -28,4 +32,123 @@ body::before {
     linear-gradient(90deg, rgb(41 64 69 / 0.03) 1px, transparent 1px);
   background-size: 22px 22px;
   opacity: 0.35;
+}
+
+body::after {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  content: '';
+  background:
+    radial-gradient(circle at 20% 80%, rgb(246 200 95 / 0.18), transparent 16%),
+    linear-gradient(115deg, transparent 0 44%, rgb(255 255 255 / 0.22) 44% 45%, transparent 45% 100%);
+  mix-blend-mode: soft-light;
+}
+
+.page-shell {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 6% 12%, rgb(255 255 255 / 0.70), transparent 17%),
+    radial-gradient(circle at 90% 5%, rgb(105 168 214 / 0.18), transparent 19%),
+    linear-gradient(160deg, rgb(247 241 227 / 0.96), rgb(239 228 209 / 0.84));
+}
+
+.page-shell::before {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  content: '';
+  background:
+    repeating-linear-gradient(102deg, transparent 0 34px, rgb(41 64 69 / 0.025) 35px 36px),
+    radial-gradient(circle at 12% 50%, rgb(239 176 201 / 0.26), transparent 18%);
+}
+
+.shell-orb,
+.shell-route {
+  position: fixed;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.shell-orb {
+  width: clamp(180px, 24vw, 360px);
+  aspect-ratio: 1;
+  border-radius: 999px;
+  filter: blur(2px);
+  opacity: 0.62;
+  animation: shellOrbFloat 10s ease-in-out infinite;
+}
+
+.shell-orb--left {
+  left: -80px;
+  top: 18vh;
+  background: radial-gradient(circle, rgb(239 176 201 / 0.38), transparent 66%);
+}
+
+.shell-orb--right {
+  right: -90px;
+  bottom: 6vh;
+  background: radial-gradient(circle, rgb(105 168 214 / 0.34), transparent 68%);
+  animation-delay: -4s;
+}
+
+.shell-route {
+  inset: auto 4vw 8vh 4vw;
+  height: 180px;
+  opacity: 0.45;
+  background:
+    radial-gradient(circle, rgb(41 64 69 / 0.18) 0 3px, transparent 4px) 0 50% / 54px 22px repeat-x;
+  mask-image: linear-gradient(90deg, transparent, black 16%, black 84%, transparent);
+  transform: rotate(-3deg);
+}
+
+.shell-header-card,
+.shell-main-card {
+  position: relative;
+}
+
+.shell-header-card::after,
+.shell-main-card::before {
+  position: absolute;
+  pointer-events: none;
+  content: '';
+}
+
+.shell-header-card::after {
+  right: 28px;
+  top: -12px;
+  width: 84px;
+  height: 28px;
+  border: 1px dashed rgb(123 91 45 / 0.28);
+  border-radius: 7px;
+  background: rgb(246 200 95 / 0.36);
+  transform: rotate(4deg);
+}
+
+.shell-main-card::before {
+  inset: 10px;
+  border: 1px dashed rgb(41 64 69 / 0.09);
+  border-radius: 1.6rem;
+}
+
+.magic-card {
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    background-color 220ms ease;
+}
+
+.magic-card:hover {
+  transform: translateY(-3px);
+  border-color: rgb(105 168 214 / 0.32);
+  box-shadow: 0 22px 50px rgb(41 64 69 / 0.12), 0 7px 0 rgb(41 64 69 / 0.07);
+}
+
+@keyframes shellOrbFloat {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(18px, -14px, 0) scale(1.04); }
 }

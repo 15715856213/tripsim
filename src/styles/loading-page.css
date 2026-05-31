@@ -47,6 +47,8 @@ body:has(main.screen) {
   inset: 0;
   overflow: hidden;
   background:
+    radial-gradient(circle at 20% 18%, rgba(239, 125, 150, 0.18), transparent 18%),
+    radial-gradient(circle at 78% 24%, rgba(103, 202, 233, 0.22), transparent 19%),
     radial-gradient(circle at 58% 50%, rgba(255, 246, 205, 0.92) 0 30%, rgba(251, 245, 228, 0.8) 62%, rgba(240, 230, 209, 0.95) 100%);
 }
 
@@ -62,7 +64,38 @@ body:has(main.screen) {
   transform-origin: center center;
   background:
     radial-gradient(circle at 52% 42%, rgba(255, 248, 217, 0.95), rgba(251, 245, 228, 0.95) 62%, rgba(240, 230, 209, 0.95) 100%);
-  box-shadow: 0 18px 60px rgba(73, 52, 18, 0.12);
+  box-shadow:
+    0 0 0 10px rgba(255, 255, 255, 0.34),
+    0 18px 60px rgba(73, 52, 18, 0.12),
+    0 32px 110px rgba(103, 202, 233, 0.16);
+}
+
+.screen .stage::before,
+.screen .stage::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  border-radius: 999px;
+  z-index: 2;
+}
+
+.screen .stage::before {
+  left: 118px;
+  top: 88px;
+  width: 780px;
+  height: 440px;
+  border: 2px dashed rgba(126, 98, 190, 0.20);
+  transform: rotate(-6deg);
+  animation: loadingAura 18s linear infinite;
+}
+
+.screen .stage::after {
+  right: 120px;
+  bottom: 70px;
+  width: 360px;
+  height: 210px;
+  background: radial-gradient(circle, rgba(243, 190, 66, 0.16), transparent 70%);
+  animation: loadingGlow 4.8s ease-in-out infinite;
 }
 
 /* 纸张纹理 */
@@ -189,7 +222,29 @@ body:has(main.screen) {
     linear-gradient(0deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.22)),
     radial-gradient(circle at 30% 20%, rgba(255, 251, 226, 0.95), rgba(248, 240, 218, 0.92));
   border: 4px solid rgba(113, 84, 48, 0.92);
-  box-shadow: 0 7px 0 rgba(126, 92, 45, 0.07), 0 15px 34px rgba(80, 54, 24, 0.08);
+  box-shadow:
+    0 7px 0 rgba(126, 92, 45, 0.07),
+    0 15px 34px rgba(80, 54, 24, 0.08),
+    0 0 26px rgba(255, 255, 255, 0.34);
+  transition: transform 240ms ease, box-shadow 240ms ease;
+}
+
+.hand-card:hover {
+  transform: translateY(-4px) rotate(-0.25deg);
+  box-shadow:
+    0 9px 0 rgba(126, 92, 45, 0.06),
+    0 20px 42px rgba(80, 54, 24, 0.11),
+    0 0 34px rgba(103, 202, 233, 0.22);
+}
+
+@keyframes loadingAura {
+  from { transform: rotate(-6deg); }
+  to { transform: rotate(354deg); }
+}
+
+@keyframes loadingGlow {
+  0%, 100% { opacity: 0.35; transform: scale(0.96); }
+  50% { opacity: 0.78; transform: scale(1.05); }
 }
 
 .hand-card::before {

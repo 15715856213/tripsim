@@ -80,6 +80,13 @@ export default function WenzhouBudgetPage() {
         <div className="flower flower-b">✿</div>
         <div className="flower flower-c">✿</div>
 
+        <div className="budget-sticker budget-sticker--coin" aria-hidden="true">¥</div>
+        <div className="budget-sticker budget-sticker--map" aria-hidden="true">MAP</div>
+        <div className="budget-sticker budget-sticker--ticket" aria-hidden="true">PASS</div>
+        <div className="budget-path-dots" aria-hidden="true">
+          <span /><span /><span /><span /><span /><span />
+        </div>
+
         <header className="title-box sketch-card">
           <span className="pin-icon">📍</span>
           <h1>温州城市漫游副本</h1>

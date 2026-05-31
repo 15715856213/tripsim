@@ -2,6 +2,7 @@ import { create } from 'zustand'
 import { defaultScenarioPreset, scenarioPresets } from '@/data/scenarios'
 import { createJourneyScenario, resolveScenarioPreset, selectJourneyOption } from '@/lib/journey'
 import type { JourneyScenario, JourneyScenarioPreset, ScenarioMatchMeta } from '@/types/journey'
+import type { SelectionMap } from '@/lib/analysis'
 
 export type FlowStage = 'home' | 'loading' | 'journey' | 'result' | 'wenzhou-budget' | 'wenzhou-sim'
 
@@ -20,6 +21,7 @@ type AppState = {
   flowStage: FlowStage
   wenzhouSimBudget: number
   wenzhouSimSavedSnapshot: WenzhouSimBudgetSnapshot | null
+  wenzhouSimSelections: SelectionMap | null
   setDraftLink: (value: string) => void
   resolveScenarioByDraftLink: (value?: string) => void
   setActiveScenario: (scenarioId: string) => void
@@ -28,6 +30,7 @@ type AppState = {
   setFlowStage: (stage: FlowStage) => void
   setWenzhouSimBudget: (value: number) => void
   saveWenzhouSimSnapshot: (value: WenzhouSimBudgetSnapshot) => void
+  saveWenzhouSimSelections: (value: SelectionMap) => void
 }
 
 const initialResolved = resolveScenarioPreset('', scenarioPresets)
@@ -79,6 +82,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   flowStage: 'home',
   wenzhouSimBudget: 300,
   wenzhouSimSavedSnapshot: loadWenzhouSimSnapshot(),
+  wenzhouSimSelections: null,
   setDraftLink: (value) => {
     const resolved = resolveScenarioPreset(value, get().scenarioCatalog)
 
@@ -144,4 +148,5 @@ export const useAppStore = create<AppState>((set, get) => ({
       return
     }
   },
+  saveWenzhouSimSelections: (value) => set({ wenzhouSimSelections: value }),
 }))

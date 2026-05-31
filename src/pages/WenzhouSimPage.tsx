@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import '../styles/wenzhou-sim.css'
 import { scriptNodes } from '@/data/travelScript'
 import {
@@ -57,8 +58,11 @@ const fitStage = () => {
 }
 
 function WenzhouSimPage() {
+  const navigate = useNavigate()
   const storedBudget = useAppStore((state) => state.wenzhouSimBudget)
+  const setFlowStage = useAppStore((state) => state.setFlowStage)
   const saveWenzhouSimSnapshot = useAppStore((state) => state.saveWenzhouSimSnapshot)
+  const saveWenzhouSimSelections = useAppStore((state) => state.saveWenzhouSimSelections)
   const [budget, setBudget] = useState(storedBudget)
   const [currentStep, setCurrentStep] = useState(0)
   const [selections, setSelections] = useState<SelectionMap>({})
@@ -142,8 +146,12 @@ function WenzhouSimPage() {
 
   const handleSave = () => {
     saveWenzhouSimSnapshot({ budget, spent, remaining })
+    saveWenzhouSimSelections(selections)
     setSaveFeedback('saved')
-    window.setTimeout(() => setSaveFeedback('idle'), 1200)
+    setFlowStage('result')
+    window.setTimeout(() => {
+      navigate('/result', { replace: true })
+    }, 300)
   }
 
   const leftRailStatus = (index: number) => {

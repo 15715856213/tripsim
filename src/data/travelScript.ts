@@ -49,20 +49,20 @@ export const siteMeta = {
 
 export const budgetCopies: Record<BudgetState, string[]> = {
   abundant: [
-    '经费还很充足。今天是来旅行的，不是来受苦的。',
-    '钱包状态优秀。如果遇到喜欢的体验，可以大胆试试看。',
+    '经费很充裕~ 今天是来旅行的，不是来受苦的，喜欢就大胆冲吧 ✨',
+    '钱包状态满分！遇到心动的体验别犹豫，这一刻的快乐才是最珍贵的。',
   ],
   healthy: [
-    '预算进入中场。接下来的选择，会开始影响最终结局。',
-    '快乐和预算目前保持平衡。继续保持。',
+    '预算走到中场啦，每个选择都开始有自己的分量，慢慢来，享受这个过程~',
+    '快乐和预算正在跳一支微妙的舞，保持这份平衡就很棒。',
   ],
   tight: [
-    '经费开始告急。接下来的高消费项目，可能会导致超预算。',
-    '钱包正在看着你。或许该考虑一些免费的风景。',
+    '钱包在轻轻拽你的衣角了~ 接下来的每一步，都可以想想什么对你最重要。',
+    '经费有点紧了呢，但最好的风景往往都是免费的，不是吗？',
   ],
   over: [
-    '预算已经阵亡。但快乐似乎还活着。',
-    '当前状态：来都来了。',
+    '预算已经阵亡了，但快乐好像还活蹦乱跳的~ 来都来了，对吧？',
+    '超支了！但谁说旅行一定要按计划来？偶尔任性一次也是回忆的一部分。',
   ],
 }
 
@@ -76,7 +76,7 @@ export const scriptNodes: ScriptNode[] = [
     location: '五马街附近',
     mission: '开局补能量，别把上午的快乐输给低血糖。',
     accent: '#5ba65b',
-    illustration: assetUrl('illustrations/breakfast-sketch.png'),
+    illustration: assetUrl('illustrations/01.jpg'),
     options: [
       {
         id: 'hotel-breakfast',
@@ -156,7 +156,7 @@ export const scriptNodes: ScriptNode[] = [
     location: '鹿城区',
     mission: '轻松把“来过温州”的含金量打上去。',
     accent: '#59b6df',
-    illustration: assetUrl('illustrations/jiangxinyu-sketch.png'),
+    illustration: assetUrl('illustrations/02.jpg'),
     options: [
       {
         id: 'island-ticket',
@@ -214,7 +214,7 @@ export const scriptNodes: ScriptNode[] = [
     location: '五马历史文化街区',
     mission: '逛到“热闹”即可，别被消费冲动偷走下午体力。',
     accent: '#f1a23a',
-    illustration: assetUrl('illustrations/wuma-street-sketch.png'),
+    illustration: assetUrl('illustrations/03.jpg'),
     options: [
       {
         id: 'souvenir-shopping',
@@ -272,7 +272,7 @@ export const scriptNodes: ScriptNode[] = [
     location: '南塘街附近',
     mission: '用一顿饭决定今天是“本地派”还是“清淡续命派”。',
     accent: '#e58d4d',
-    illustration: assetUrl('illustrations/lunch-sketch.png'),
+    illustration: assetUrl('illustrations/04.jpg'),
     options: [
       {
         id: 'seafood-feast',
@@ -352,7 +352,7 @@ export const scriptNodes: ScriptNode[] = [
     location: '南塘街',
     mission: '把节奏放慢，把“城市温柔面”拍进脑子里。',
     accent: '#79a674',
-    illustration: assetUrl('illustrations/nantang-sketch.png'),
+    illustration: assetUrl('illustrations/05.jpg'),
     options: [
       {
         id: 'boat-ride',
@@ -410,7 +410,7 @@ export const scriptNodes: ScriptNode[] = [
     location: '咖啡街区',
     mission: '续命 + 整理照片，给晚上的体力条续一口。',
     accent: '#8a6a57',
-    illustration: assetUrl('illustrations/coffee-sketch.png'),
+    illustration: assetUrl('illustrations/06.jpg'),
     options: [
       {
         id: 'instagram-cafe',
@@ -490,7 +490,7 @@ export const scriptNodes: ScriptNode[] = [
     location: '瓯江沿岸',
     mission: '用夜风收尾，把“今天很值”落到最后一幕。',
     accent: '#486cb0',
-    illustration: assetUrl('illustrations/night-view-sketch.png'),
+    illustration: assetUrl('illustrations/07.png'),
     options: [
       {
         id: 'night-cruise',

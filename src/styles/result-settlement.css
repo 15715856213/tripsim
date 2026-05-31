@@ -1,0 +1,982 @@
+.stage.is-settlement {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255, 247, 220, 0.97), rgba(251, 244, 226, 0.96) 62%, rgba(241, 231, 208, 0.99) 100%);
+}
+
+.stage.is-settlement::after {
+  content: '';
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  top: 262px;
+  height: 394px;
+  border-radius: 32px;
+  background: rgba(255, 252, 240, 0.22);
+  border: 1.5px dashed rgba(182, 152, 114, 0.12);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.settle-tag {
+  position: absolute;
+  left: 24px;
+  top: 24px;
+  z-index: 3;
+  padding: 10px 20px;
+  border-radius: 16px 18px 14px 16px;
+  border: 2px solid rgba(132, 101, 57, 0.5);
+  background: rgba(236, 214, 171, 0.65);
+  font-size: 20px;
+  font-weight: 900;
+  color: #5a4121;
+  transform: rotate(-4deg);
+  opacity: 0.8;
+}
+
+.settlement-header {
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  width: 680px;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 2;
+}
+
+.settlement-title-card {
+  position: relative;
+  padding: 16px 24px;
+  border: 3px solid rgba(138, 109, 68, 0.55);
+  border-radius: 22px 20px 18px 20px;
+  background: rgba(255, 250, 238, 0.86);
+  box-shadow: 0 8px 18px rgba(102, 79, 43, 0.08);
+}
+
+.settlement-title-card h1 {
+  margin: 0;
+  font-size: 50px;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #eb5b43 0%, #f1a136 28%, #2e8fd6 62%, #824fcf 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.settlement-subtitle {
+  margin: 8px 0 0;
+  font-size: 20px;
+  font-weight: 900;
+  color: #2d2720;
+}
+
+.banner-tape {
+  position: absolute;
+  top: -8px;
+  width: 62px;
+  height: 24px;
+  background:
+    repeating-linear-gradient(160deg, rgba(189, 126, 36, 0.18) 0 6px, transparent 6px 13px),
+    rgba(224, 167, 70, 0.7);
+  border: 1px solid rgba(171, 123, 50, 0.25);
+  box-shadow: 0 2px 5px rgba(91, 70, 35, 0.14);
+}
+
+.banner-tape.left {
+  left: 24px;
+  transform: rotate(-16deg);
+}
+
+.banner-tape.right {
+  right: 24px;
+  transform: rotate(14deg);
+}
+
+.amount-panel {
+  position: absolute;
+  left: 50%;
+  top: 138px;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 2;
+}
+
+.amount-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+}
+
+.amount-main {
+  position: relative;
+  font-weight: 900;
+  color: #ea544a;
+  text-shadow: 0 5px 0 rgba(204, 101, 78, 0.1);
+}
+
+.amount-main strong {
+  font-size: 88px;
+  line-height: 1;
+}
+
+.overspend-alert {
+  position: absolute;
+  right: -10px;
+  top: 4px;
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 3px solid #d14131;
+  background: #ffede9;
+  color: #d14131;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.amount-delta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 20px;
+  border: 3px solid rgba(132, 101, 57, 0.38);
+  background: rgba(240, 243, 238, 0.88);
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.amount-delta.saving {
+  color: #4e7a33;
+}
+
+.amount-delta.overspend {
+  color: #d14b3b;
+  background: rgba(255, 240, 236, 0.92);
+}
+
+.personality-card {
+  left: 22px;
+  top: 274px;
+  width: 400px;
+  height: 370px;
+  border-radius: 24px 22px 20px 22px;
+  padding: 22px 24px 18px;
+}
+
+.achievement-book {
+  left: 452px;
+  top: 274px;
+  width: 400px;
+  height: 370px;
+  border-radius: 22px 24px 20px 22px;
+  padding: 20px 18px 16px;
+}
+
+.journey-book {
+  left: 882px;
+  top: 274px;
+  width: 415px;
+  height: 370px;
+  border-radius: 22px 24px 20px 22px;
+  padding: 18px 22px 16px 38px;
+}
+
+.masking-tape {
+  position: absolute;
+  width: 64px;
+  height: 22px;
+  background:
+    repeating-linear-gradient(160deg, rgba(189, 126, 36, 0.18) 0 6px, transparent 6px 13px),
+    rgba(224, 167, 70, 0.56);
+  border: 1px solid rgba(171, 123, 50, 0.22);
+  box-shadow: 0 2px 5px rgba(91, 70, 35, 0.14);
+}
+
+.tape-left-small {
+  left: 24px;
+  top: -10px;
+  transform: rotate(-6deg);
+}
+
+.tape-right-small {
+  right: 18px;
+  top: -6px;
+  transform: rotate(18deg);
+}
+
+.tape-top-center {
+  left: 50%;
+  top: -8px;
+  transform: translateX(-50%) rotate(-8deg);
+}
+
+.personality-card h2,
+.achievement-book h2,
+.journey-book h2 {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-size: 26px;
+  text-align: center;
+  color: #25438d;
+}
+
+.achievement-book h2 {
+  color: #3a311f;
+}
+
+.journey-book h2 {
+  color: #332920;
+  background: rgba(255, 203, 210, 0.5);
+  border-radius: 18px;
+  padding: 6px 0;
+}
+
+.personality-name {
+  position: relative;
+  z-index: 1;
+  margin: 14px auto 10px;
+  width: fit-content;
+  min-width: 210px;
+  padding: 10px 22px;
+  border-radius: 18px;
+  color: #fff;
+  font-size: 28px;
+  font-weight: 900;
+  text-align: center;
+  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.08);
+}
+
+.personality-desc {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  text-align: center;
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 800;
+  color: #2f2921;
+}
+
+.keyword-row {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.keyword-pill {
+  padding: 6px 14px;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.keyword-pill:nth-child(1) { background: #ef7d96; }
+.keyword-pill:nth-child(2) { background: #48a1e0; }
+.keyword-pill:nth-child(3) { background: #68b95f; }
+
+.quote-card {
+  position: relative;
+  z-index: 1;
+  margin-top: 12px;
+  padding: 12px 16px;
+  border-radius: 18px;
+  border: 3px solid rgba(182, 160, 119, 0.45);
+  background: rgba(255, 250, 240, 0.88);
+  text-align: center;
+}
+
+.quote-card p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.42;
+  font-weight: 900;
+}
+
+.quote-mark {
+  position: absolute;
+  font-size: 36px;
+  font-weight: 900;
+  color: #9d72d7;
+}
+
+.quote-mark.left {
+  left: 10px;
+  top: 2px;
+}
+
+.quote-mark.right {
+  right: 10px;
+  bottom: -4px;
+}
+
+.achievement-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.achievement-card {
+  padding: 8px 6px 6px;
+  border-radius: 16px;
+  border: 2px dashed rgba(166, 145, 111, 0.24);
+  background: rgba(255, 252, 245, 0.85);
+  text-align: center;
+}
+
+.achievement-card strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 15px;
+  color: #332920;
+}
+
+.achievement-card p {
+  margin: 2px 0 0;
+  font-size: 11px;
+  line-height: 1.25;
+  font-weight: 800;
+  color: #594f44;
+}
+
+.badge-seal {
+  --badge-color: #8f6ac8;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+  border-radius: 20px 20px 24px 24px;
+  background:
+    radial-gradient(circle at 35% 25%, rgba(255, 255, 255, 0.75), transparent 24%),
+    linear-gradient(180deg, color-mix(in srgb, var(--badge-color) 80%, white), var(--badge-color));
+  border: 3px solid rgba(90, 70, 40, 0.55);
+  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.08);
+  display: grid;
+  place-items: center;
+}
+
+.badge-icon {
+  font-size: 28px;
+}
+
+.book-rings {
+  position: absolute;
+  left: -16px;
+  top: 28px;
+  bottom: 30px;
+  width: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.book-rings span {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 3px solid rgba(112, 88, 58, 0.62);
+  background: rgba(255, 251, 240, 0.86);
+}
+
+.journey-list {
+  position: relative;
+  z-index: 1;
+  margin-top: 12px;
+}
+
+.journey-list::before {
+  content: '';
+  position: absolute;
+  left: 14px;
+  top: 6px;
+  bottom: 10px;
+  width: 3px;
+  border-radius: 999px;
+  background:
+    repeating-linear-gradient(180deg, #9c78d9 0 18px, #f0b047 18px 36px, #79bb69 36px 54px, #60a2e6 54px 72px);
+  opacity: 0.7;
+}
+
+.journey-item {
+  display: grid;
+  grid-template-columns: 52px 42px 1fr 28px;
+  align-items: center;
+  gap: 10px;
+  min-height: 38px;
+  padding: 4px 0;
+  border-bottom: 2px dashed rgba(182, 160, 119, 0.22);
+}
+
+.journey-item:last-child {
+  border-bottom: none;
+}
+
+.journey-time {
+  font-size: 13px;
+  font-weight: 800;
+  color: #8e7a5a;
+}
+
+.journey-icon {
+  font-size: 22px;
+  text-align: center;
+}
+
+.journey-item strong {
+  font-size: 16px;
+  color: #2d2721;
+}
+
+.journey-mood {
+  font-size: 17px;
+  text-align: center;
+}
+
+.settlement-footer {
+  position: absolute;
+  left: 260px;
+  right: 260px;
+  bottom: 14px;
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  z-index: 2;
+}
+
+.settlement-button {
+  min-width: 280px;
+  height: 70px;
+  border-radius: 24px;
+  border: 4px solid rgba(113, 84, 48, 0.86);
+  background: rgba(255, 252, 242, 0.95);
+  font-size: 22px;
+  font-weight: 900;
+  color: #2f2921;
+  box-shadow: 0 7px 0 rgba(126, 92, 45, 0.07), 0 15px 34px rgba(80, 54, 24, 0.08);
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.15s, box-shadow 0.15s, filter 0.15s;
+}
+
+.settlement-button::before {
+  content: '';
+  position: absolute;
+  inset: -70% -60%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.42), transparent);
+  opacity: 0;
+  transform: translateX(-62%) rotate(17deg);
+}
+
+.settlement-button:hover {
+  transform: translateY(-4px) rotate(-0.25deg);
+  filter: brightness(1.04) saturate(1.08);
+  box-shadow: 0 10px 0 rgba(126, 92, 45, 0.06), 0 22px 42px rgba(80, 54, 24, 0.12);
+}
+
+.settlement-button:hover::before {
+  animation: settlementButtonShine 760ms ease;
+}
+
+.settlement-button:active {
+  transform: translateY(2px);
+  box-shadow: 0 3px 0 rgba(126, 92, 45, 0.07), 0 8px 18px rgba(80, 54, 24, 0.08);
+}
+
+@keyframes settlementButtonShine {
+  0% { opacity: 0; transform: translateX(-62%) rotate(17deg); }
+  35% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(62%) rotate(17deg); }
+}
+
+.settlement-button.replay {
+  border-color: rgba(103, 173, 82, 0.86);
+  background:
+    repeating-linear-gradient(165deg, rgba(108, 176, 104, 0.2) 0 10px, transparent 10px 18px),
+    rgba(225, 247, 214, 0.96);
+}
+
+.settlement-button.share {
+  border-color: rgba(67, 137, 221, 0.88);
+  background:
+    repeating-linear-gradient(165deg, rgba(84, 152, 235, 0.18) 0 10px, transparent 10px 18px),
+    rgba(221, 241, 255, 0.96);
+}
+
+.share-feedback {
+  position: absolute;
+  left: 50%;
+  bottom: 96px;
+  transform: translateX(-50%);
+  z-index: 3;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 2px solid rgba(93, 82, 65, 0.4);
+  background: rgba(255, 252, 242, 0.94);
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.stamp,
+.camera-doodle,
+.suitcase-doodle,
+.coin-doodle,
+.star-settle {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.stamp {
+  padding: 8px 12px;
+  border: 2px dashed rgba(140, 109, 194, 0.3);
+  border-radius: 14px;
+  color: rgba(123, 95, 187, 0.5);
+  font-size: 18px;
+  font-weight: 900;
+  background: rgba(255, 247, 252, 0.25);
+}
+
+.stamp-left {
+  left: 180px;
+  top: 112px;
+  transform: rotate(-10deg);
+}
+
+.stamp-right {
+  right: 68px;
+  top: 220px;
+  transform: rotate(4deg);
+}
+
+.camera-doodle {
+  right: 56px;
+  top: 80px;
+  font-size: 44px;
+  opacity: 0.55;
+}
+
+.suitcase-doodle {
+  right: 86px;
+  bottom: 28px;
+  font-size: 64px;
+  opacity: 0.5;
+}
+
+.coin-doodle {
+  left: 22px;
+  bottom: 22px;
+  font-size: 38px;
+  opacity: 0.45;
+}
+
+.floral {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.leaf-a {
+  left: 46px;
+  top: 186px;
+  font-size: 42px;
+  opacity: 0.55;
+  transform: rotate(-15deg);
+}
+
+.leaf-b {
+  right: 44px;
+  top: 162px;
+  font-size: 36px;
+  opacity: 0.5;
+  transform: rotate(20deg);
+}
+
+.leaf-c {
+  left: 100px;
+  bottom: 38px;
+  font-size: 48px;
+  opacity: 0.5;
+  transform: rotate(10deg);
+}
+
+.flower-d {
+  left: 12px;
+  top: 220px;
+  font-size: 44px;
+  opacity: 0.6;
+  transform: rotate(-8deg);
+}
+
+.flower-e {
+  right: 24px;
+  top: 246px;
+  font-size: 46px;
+  opacity: 0.55;
+  transform: rotate(12deg);
+}
+
+.flower-f {
+  right: 110px;
+  bottom: 18px;
+  font-size: 50px;
+  opacity: 0.5;
+  transform: rotate(-5deg);
+}
+
+.flower-g {
+  left: 58px;
+  bottom: 64px;
+  font-size: 52px;
+  opacity: 0.5;
+  transform: rotate(6deg);
+}
+
+.clover-h {
+  right: 34px;
+  bottom: 62px;
+  font-size: 40px;
+  opacity: 0.5;
+  transform: rotate(-12deg);
+}
+
+.star-settle {
+  color: rgba(246, 191, 59, 0.5);
+  font-size: 26px;
+}
+
+.star-one { left: 186px; top: 116px; }
+.star-two { right: 228px; top: 72px; }
+.star-three { left: 24px; bottom: 100px; }
+
+.arc {
+  position: absolute;
+  width: 240px;
+  height: 80px;
+  border-radius: 999px 999px 0 0;
+  border-top: 16px solid transparent;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #ef7890 0 30px,
+      #67b05e 30px 60px,
+      #4f91d8 60px 90px,
+      #f0b142 90px 120px
+    );
+  clip-path: ellipse(49% 100% at 50% 100%);
+  opacity: 0.45;
+}
+
+.arc-left {
+  left: -14px;
+  top: 244px;
+  transform: rotate(-8deg);
+}
+
+.arc-right {
+  right: -14px;
+  top: 244px;
+  transform: scaleX(-1) rotate(-8deg);
+}
+
+.badge-modal-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  background: rgba(45, 31, 11, 0.26);
+}
+
+.badge-modal-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 500px;
+  transform: translate(-50%, -50%);
+  border-radius: 30px;
+  border: 4px solid rgba(113, 84, 48, 0.88);
+  background:
+    linear-gradient(0deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.25)),
+    radial-gradient(circle at 30% 20%, rgba(255, 251, 226, 0.95), rgba(248, 240, 218, 0.92));
+  box-shadow: 0 7px 0 rgba(126, 92, 45, 0.07), 0 15px 34px rgba(80, 54, 24, 0.08);
+  padding: 28px 28px 24px;
+  text-align: center;
+  z-index: 21;
+}
+
+.badge-modal-x {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid rgba(113, 84, 48, 0.5);
+  background: rgba(255, 255, 255, 0.7);
+  font-size: 18px;
+  font-weight: 900;
+  color: #5a4121;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: background 0.15s;
+}
+
+.badge-modal-x:hover {
+  background: rgba(255, 200, 180, 0.7);
+}
+
+.badge-modal-card h3 {
+  margin: 0 0 18px;
+  font-size: 34px;
+  color: #2f2921;
+}
+
+.badge-modal-image {
+  display: block;
+  max-width: 100%;
+  max-height: 340px;
+  margin: 0 auto;
+  border-radius: 18px;
+  object-fit: contain;
+}
+
+.badge-modal-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.badge-modal-btn {
+  flex: 1;
+  height: 56px;
+  border-radius: 18px;
+  border: 3px solid rgba(113, 84, 48, 0.7);
+  font-size: 21px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform 0.12s;
+}
+
+.badge-modal-btn:active {
+  transform: translateY(1px);
+}
+
+.badge-modal-btn.save {
+  border-color: rgba(103, 173, 82, 0.86);
+  background:
+    repeating-linear-gradient(165deg, rgba(108, 176, 104, 0.2) 0 10px, transparent 10px 18px),
+    rgba(225, 247, 214, 0.96);
+  color: #2f5b34;
+}
+
+.badge-modal-btn.share-img {
+  border-color: rgba(67, 137, 221, 0.88);
+  background:
+    repeating-linear-gradient(165deg, rgba(84, 152, 235, 0.18) 0 10px, transparent 10px 18px),
+    rgba(221, 241, 255, 0.96);
+  color: #345fa8;
+}
+
+@media (max-height: 430px) {
+  .settlement-header {
+    top: 16px;
+    width: 620px;
+  }
+
+  .settlement-title-card h1 {
+    font-size: 42px;
+  }
+
+  .settlement-subtitle {
+    margin-top: 4px;
+    font-size: 16px;
+  }
+
+  .amount-panel {
+    top: 120px;
+  }
+
+  .amount-row {
+    gap: 28px;
+  }
+
+  .amount-main strong {
+    font-size: 64px;
+  }
+
+  .overspend-alert {
+    top: 2px;
+    right: -8px;
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+  }
+
+  .amount-delta {
+    padding: 6px 14px;
+    font-size: 18px;
+  }
+
+  .personality-card {
+    left: 10px;
+    top: 240px;
+    width: 368px;
+    height: 310px;
+    padding: 14px 16px 10px;
+  }
+
+  .achievement-book {
+    left: 392px;
+    top: 240px;
+    width: 368px;
+    height: 310px;
+    padding: 14px 12px 10px;
+  }
+
+  .journey-book {
+    left: 774px;
+    top: 240px;
+    width: 388px;
+    height: 310px;
+    padding: 14px 16px 10px 32px;
+  }
+
+  .personality-card h2,
+  .achievement-book h2,
+  .journey-book h2 {
+    font-size: 22px;
+  }
+
+  .personality-name {
+    margin: 10px auto 8px;
+    min-width: 180px;
+    padding: 8px 16px;
+    font-size: 23px;
+  }
+
+  .personality-desc {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .keyword-row {
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .keyword-pill {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .quote-card {
+    margin-top: 8px;
+    padding: 10px 14px;
+  }
+
+  .quote-card p {
+    font-size: 13px;
+    line-height: 1.35;
+  }
+
+  .quote-mark {
+    font-size: 28px;
+  }
+
+  .achievement-grid {
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .achievement-card {
+    padding: 8px 6px 6px;
+  }
+
+  .achievement-card strong {
+    margin-top: 4px;
+    font-size: 14px;
+  }
+
+  .achievement-card p {
+    font-size: 11px;
+    line-height: 1.26;
+  }
+
+  .badge-seal {
+    width: 62px;
+    height: 62px;
+  }
+
+  .badge-icon {
+    font-size: 28px;
+  }
+
+  .journey-book h2 {
+    padding: 4px 0;
+  }
+
+  .journey-list {
+    margin-top: 8px;
+  }
+
+  .journey-item {
+    grid-template-columns: 42px 34px 1fr 20px;
+    gap: 6px;
+    min-height: 30px;
+    padding: 2px 0;
+  }
+
+  .journey-time {
+    font-size: 11px;
+  }
+
+  .journey-icon {
+    font-size: 17px;
+  }
+
+  .journey-item strong {
+    font-size: 13px;
+  }
+
+  .journey-mood {
+    font-size: 14px;
+  }
+
+  .settlement-footer {
+    left: 200px;
+    right: 200px;
+    bottom: 8px;
+    gap: 16px;
+  }
+
+  .settlement-button {
+    min-width: 200px;
+    height: 54px;
+    font-size: 17px;
+  }
+
+  .share-feedback {
+    bottom: 72px;
+    font-size: 14px;
+  }
+
+  .camera-doodle,
+  .suitcase-doodle,
+  .coin-doodle,
+  .star-three,
+  .arc,
+  .floral {
+    display: none;
+  }
+}

@@ -1,8 +1,34 @@
-import { useEffect } from 'react'
+import { useEffect, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { useAppStore } from '@/store/app-store'
 import { initHomeEffects } from '@/lib/home-effects'
 import '@/styles/home-handdrawn.css'
+
+async function lockLandscape() {
+  try {
+    if (document.fullscreenEnabled && !document.fullscreenElement) {
+      await document.documentElement.requestFullscreen()
+    }
+    if ((screen.orientation as any)?.lock) {
+      await (screen.orientation as any).lock('landscape')
+    }
+  } catch {
+    // orientation lock is a progressive enhancement
+  }
+}
+
+async function unlockOrientation() {
+  try {
+    if (screen.orientation?.unlock) {
+      screen.orientation.unlock()
+    }
+    if (document.fullscreenElement) {
+      await document.exitFullscreen()
+    }
+  } catch {
+    // ignore
+  }
+}
 
 export default function Home() {
   const draftLink = useAppStore((state) => state.draftLink)
@@ -13,12 +39,28 @@ export default function Home() {
     initHomeEffects()
   }, [])
 
+  const handleInputFocus = useCallback(() => {
+    lockLandscape()
+  }, [])
+
+  const handleInputBlur = useCallback(() => {
+    unlockOrientation()
+  }, [])
+
   return (
     <main className="stage" aria-label="TripSim 手绘旅行首页">
       {/* 纸张纹理层 */}
       <div className="paper-texture" />
       <div className="pencil-lines" />
       <div className="random-sparkles" id="sparkles" />
+      <div className="hero-glow-ring hero-glow-ring--one" aria-hidden="true" />
+      <div className="hero-glow-ring hero-glow-ring--two" aria-hidden="true" />
+      <div className="floating-ticket floating-ticket--left" aria-hidden="true">
+        <span>TRIP</span>
+      </div>
+      <div className="floating-ticket floating-ticket--right" aria-hidden="true">
+        <span>GO</span>
+      </div>
 
       {/* 左上太阳 */}
       <section className="sun-wrap float-slow" aria-hidden="true">
@@ -92,6 +134,8 @@ export default function Home() {
             type="text"
             value={draftLink}
             onChange={(e) => setDraftLink(e.target.value)}
+            onFocus={handleInputFocus}
+            onBlur={handleInputBlur}
             placeholder="粘贴抖音旅行视频链接..."
             style={{
               position: 'absolute',

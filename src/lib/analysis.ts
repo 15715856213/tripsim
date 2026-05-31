@@ -107,17 +107,17 @@ const getExperienceEmphasis = (vector: DecisionVector) => {
 
   switch (top) {
     case 'local':
-      return '这一步更偏向“在地体验”，会让整条路线更像真正的温州漫游。'
+      return '你选择了贴近当地的体验，这条路会让这趟旅行更像一次真正的温州漫步~'
     case 'photo':
-      return '这一步会明显拉高路线的视觉记忆点，更适合做内容传播和拍照留念。'
+      return '你为画面感投了一票~ 这一步会成为记忆里闪闪发光的定格瞬间。'
     case 'comfort':
-      return '这一步更强调舒适与享受，适合把体感放在预算之前。'
+      return '你把舒适放在了第一位，偶尔宠爱自己一下，本来就是旅行的意义呀。'
     case 'savings':
-      return '这一步非常克制，会给后续节点留出更大的预算回旋空间。'
+      return '你选择了克制，把预算留给后面更重要的时刻，这是一种成熟的温柔~'
     case 'efficiency':
-      return '这一步更像成熟攻略型选择，重视节奏、效率和少踩坑。'
+      return '节奏干脆利落，你知道自己想要什么，这种从容本身就是一种旅行智慧。'
     default:
-      return '这一步的价值在于仪式感，它会让这一天更像一个完整作品。'
+      return '这一票投给了仪式感，让它变成你故事里一个值得回味的小小章节。'
   }
 }
 
@@ -135,13 +135,13 @@ export const getStepInsight = ({
   const projectedRecommendedGap = budget - (spentAfterChoice + futureRecommended)
   const budgetState = getBudgetState(budget, spentAfterChoice)
 
-  let pressureLabel = '游刃有余'
+  let pressureLabel = '轻轻松松~'
   if (projectedRecommendedGap < 0) {
-    pressureLabel = '高压预警'
+    pressureLabel = '喘口气...'
   } else if (remaining - futureMin < 30) {
-    pressureLabel = '轻度收紧'
+    pressureLabel = '小心哦'
   } else if (remaining - futureRecommended < 50) {
-    pressureLabel = '进入中场'
+    pressureLabel = '留意一下'
   }
 
   const projectedNote =

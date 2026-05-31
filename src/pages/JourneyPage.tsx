@@ -20,17 +20,17 @@ const budgetStatusMeta: Record<BudgetStatus, { label: string; tone: string; hint
   safe: {
     label: '预算安全',
     tone: 'border-leaf/25 bg-leaf/15 text-leaf',
-    hint: '当前花费还在舒服区间，后续节点有一定回旋空间。',
+    hint: '支出稳稳的，后面还有余裕可以任性一下~ 享受这段旅程吧。',
   },
   warning: {
     label: '预算预警',
     tone: 'border-orange/25 bg-orange/15 text-orange',
-    hint: '花费已经逼近预算上限，下一张事件卡要更谨慎。',
+    hint: '快要靠近预算线了~ 下一张事件卡可以问问自己：什么才是这趟旅行最想要的？',
   },
   overspent: {
     label: '已经超支',
     tone: 'border-pink/25 bg-pink/15 text-pink',
-    hint: '可以回退已完成节点改选，也可以接受这趟旅程更任性。',
+    hint: '超预算了，但没关系~ 可以回头调整选择，也可以干脆接受这份小小的任性。',
   },
 }
 

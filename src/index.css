@@ -31,3 +31,121 @@ body {
 #root {
   min-height: 100vh;
 }
+
+::selection {
+  background: rgb(239 157 80 / 0.35);
+  color: var(--ink);
+}
+
+:where(button, a, input, textarea, select, summary, [role='button']) {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:where(button, a, [role='button']):not(:disabled) {
+  touch-action: manipulation;
+}
+
+:where(button, a, [role='button'], input, textarea, select):focus-visible {
+  outline: 4px solid rgb(105 168 214 / 0.35);
+  outline-offset: 4px;
+}
+
+.click-fx-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.click-ripple,
+.click-spark {
+  position: absolute;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  will-change: transform, opacity;
+}
+
+.click-ripple {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  border: 2px solid rgb(255 255 255 / 0.95);
+  box-shadow:
+    0 0 0 2px rgb(41 64 69 / 0.18),
+    0 0 22px rgb(239 157 80 / 0.45);
+  animation: clickRipple 520ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.click-ripple--action {
+  border-color: rgb(255 241 164 / 0.98);
+  box-shadow:
+    0 0 0 3px rgb(233 78 117 / 0.16),
+    0 0 30px rgb(242 165 31 / 0.62),
+    0 0 54px rgb(57 174 232 / 0.28);
+}
+
+.click-spark {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #f2a51f;
+  box-shadow: 0 0 12px rgb(242 165 31 / 0.55);
+  animation: clickSpark 560ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.click-spark--action:nth-child(3n) {
+  background: #39aee8;
+  box-shadow: 0 0 12px rgb(57 174 232 / 0.55);
+}
+
+.click-spark--action:nth-child(3n + 1) {
+  background: #e94e75;
+  box-shadow: 0 0 12px rgb(233 78 117 / 0.55);
+}
+
+.click-spark--ambient {
+  width: 5px;
+  height: 5px;
+  background: rgb(255 255 255 / 0.92);
+}
+
+.click-press-pop {
+  animation: clickPressPop 260ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes clickRipple {
+  from {
+    opacity: 0.95;
+    transform: translate(-50%, -50%) scale(0.35);
+  }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(4.4);
+  }
+}
+
+@keyframes clickSpark {
+  from {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(0.18);
+  }
+}
+
+@keyframes clickPressPop {
+  0% { filter: brightness(1); }
+  40% { filter: brightness(1.12) saturate(1.16); }
+  100% { filter: brightness(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .click-ripple,
+  .click-spark,
+  .click-press-pop {
+    animation-duration: 1ms;
+  }
+}

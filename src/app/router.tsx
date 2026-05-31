@@ -47,15 +47,15 @@ export function AppRouter() {
             </FlowGuard>
           }
         />
-        <Route
-          path="/result"
-          element={
-            <FlowGuard allow={['result']} redirectTo="/">
-              <ResultPage />
-            </FlowGuard>
-          }
-        />
       </Route>
+      <Route
+        path="/result"
+        element={
+          <FlowGuard allow={['result', 'wenzhou-sim']} redirectTo="/">
+            <ResultPage />
+          </FlowGuard>
+        }
+      />
       <Route
         path="/wenzhou-sim"
         element={
