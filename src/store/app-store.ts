@@ -36,6 +36,45 @@ type AppState = {
 const initialResolved = resolveScenarioPreset('', scenarioPresets)
 const initialScenario = createJourneyScenario(initialResolved.preset, initialResolved.matchMeta)
 
+const normalizePathname = (pathname: string) => {
+  const base = import.meta.env.BASE_URL
+  if (!base || base === '/') return pathname
+  const baseNoTrailingSlash = base.endsWith('/') ? base.slice(0, -1) : base
+  if (!baseNoTrailingSlash) return pathname
+  if (pathname === baseNoTrailingSlash) return '/'
+  if (pathname.startsWith(baseNoTrailingSlash + '/')) return pathname.slice(baseNoTrailingSlash.length)
+  return pathname
+}
+
+const resolveInitialFlowStage = (): FlowStage => {
+  if (typeof window === 'undefined') return 'home'
+
+  const pathname = normalizePathname(window.location.pathname || '/')
+  if (pathname.startsWith('/loading')) return 'loading'
+  if (pathname.startsWith('/journey')) return 'journey'
+  if (pathname.startsWith('/result')) return 'result'
+  if (pathname.startsWith('/wenzhou-budget')) return 'wenzhou-budget'
+  if (pathname.startsWith('/wenzhou-sim')) return 'wenzhou-sim'
+
+  try {
+    const stored = window.localStorage.getItem('flowStage') as FlowStage | null
+    if (
+      stored === 'home' ||
+      stored === 'loading' ||
+      stored === 'journey' ||
+      stored === 'result' ||
+      stored === 'wenzhou-budget' ||
+      stored === 'wenzhou-sim'
+    ) {
+      return stored
+    }
+  } catch {
+    return 'home'
+  }
+
+  return 'home'
+}
+
 const loadWenzhouSimSnapshot = (): WenzhouSimBudgetSnapshot | null => {
   if (typeof window === 'undefined') {
     return null
@@ -79,7 +118,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   activeScenarioId: initialScenario.id,
   matchMeta: initialResolved.matchMeta,
   scenario: initialScenario,
-  flowStage: 'home',
+  flowStage: resolveInitialFlowStage(),
   wenzhouSimBudget: 300,
   wenzhouSimSavedSnapshot: loadWenzhouSimSnapshot(),
   wenzhouSimSelections: null,
@@ -134,7 +173,17 @@ export const useAppStore = create<AppState>((set, get) => ({
       scenario: createJourneyScenario(preset, state.matchMeta),
     })
   },
-  setFlowStage: (stage) => set({ flowStage: stage }),
+  setFlowStage: (stage) => {
+    set({ flowStage: stage })
+    if (typeof window === 'undefined') {
+      return
+    }
+    try {
+      window.localStorage.setItem('flowStage', stage)
+    } catch {
+      return
+    }
+  },
   setWenzhouSimBudget: (value) => set({ wenzhouSimBudget: value }),
   saveWenzhouSimSnapshot: (value) => {
     set({ wenzhouSimSavedSnapshot: value })
